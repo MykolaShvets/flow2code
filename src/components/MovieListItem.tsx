@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import {
-  View, Image, StyleSheet, Text, TouchableOpacity, Dimensions,
+  View, Image, StyleSheet, Text, TouchableOpacity,
 } from 'react-native';
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack';
 
@@ -8,8 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import { IMovie } from '../models/interfaces/movieInterface';
 import { imageUrl } from '../configs/urls';
 import { RootStackParams } from '../models/types/navigationStackTypes';
-
-const window = Dimensions.get('window');
+import { windowSize } from '../configs/dimensions';
 
 const MovieListItem: FC<{item: IMovie}> = ({ item }) => {
   const navigate = useNavigation<NativeStackNavigationProp<RootStackParams>>();
@@ -39,7 +38,7 @@ const MovieListItem: FC<{item: IMovie}> = ({ item }) => {
 
 const style = StyleSheet.create({
   container: {
-    width: window.width - 10,
+    width: windowSize.width - 10,
     borderStyle: 'solid',
     borderColor: 'rgba(0,0,0,0.11)',
     borderWidth: 1,
@@ -51,12 +50,12 @@ const style = StyleSheet.create({
 
   },
   image: {
-    width: window.width / 3,
-    height: window.height / 4,
+    width: windowSize.width / 3,
+    height: windowSize.height / 4,
   },
   text: {
-    height: window.height / 4,
-    width: (window.width * 2) / 3,
+    height: windowSize.height / 4,
+    width: (windowSize.width * 2) / 3,
     flex: 1,
     marginLeft: 15,
     flexDirection: 'column',
@@ -64,7 +63,7 @@ const style = StyleSheet.create({
     alignItems: 'flex-start',
   },
   title: {
-    fontSize: 24,
+    fontSize: 24 * windowSize.fontScale,
   },
 
 });
